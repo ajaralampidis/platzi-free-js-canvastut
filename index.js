@@ -8,11 +8,10 @@ let colorRaya = "red";
 
 for (let i = 0; i < 60; i++) {
     let xi = 300;
-    let yi = i*10;
-    let xf = 300-((i+1)*10);
-    let yf = 300
+    let yi = 300-(i*10);
+    let xf = 290 - (i*10);
+    let yf = 0;
     raya(xi, yi, xf, yf);
-    
 };
 
 function raya(xi, yi, xf, yf) {
