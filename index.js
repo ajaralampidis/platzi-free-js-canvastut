@@ -3,7 +3,6 @@
 let d = document.getElementById("dibujo");
 let lienzo = d.getContext("2d");
 
-
 //Variables del canvas
 let ancho = document.getElementById("ancho").value;
 let alto = document.getElementById("alto").value;
@@ -40,20 +39,19 @@ function dibujarCanvas()
     };
 };
 
-//Dibujo al abrir la web
+//Ejecuta un dibujo al abrir la web
 window.addEventListener("load", (event) =>
 {
     dibujarCanvas();
     
 });
 
-document.getElementById("info").addEventListener("submit", (event) =>
+document.getElementById("boton").addEventListener("click", (event) =>
 {
     // evitar subbmit y limpiar el canvas
-    event.preventDefault();
     reiniciarLienzo()
     
-    // setear el ancho y alto del canvas (HTML element)
+    // re-setear el ancho y alto del canvas (HTML element)
     d.height = document.getElementById("alto").value;
     d.width = document.getElementById("ancho").value;
 
@@ -63,7 +61,7 @@ document.getElementById("info").addEventListener("submit", (event) =>
     cantLineas = document.getElementById("cantLineas").value;
     colorRaya = document.getElementById("color").value;
     
-    
+    // Ejecutar el dibujo con las nuevas variables
     return dibujarCanvas()
     
 });
