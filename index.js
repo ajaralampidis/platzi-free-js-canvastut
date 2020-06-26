@@ -65,12 +65,3 @@ document.getElementById("boton").addEventListener("click", (event) =>
     return dibujarCanvas()
     
 });
-
-//console.log(alto);
-//console.log(ancho);
-//console.log(colorRaya);
-//console.log(cantLineas);
-
-// Calculo "automático" del espacio entre lineas
-//console.log(espaciadoHorizontal);
-//console.log(espaciadoVertical);
