@@ -7,8 +7,37 @@
 </head>
 <body style="text-align: center;">
     <h1>Dibujando con JS</h1>
-    <canvas id="dibujo" width="300" height="300"></canvas>
-    <p>Testing, no css for this test :(</p>
+    <canvas id="dibujo" height="300" width="300"></canvas>
+    <br><br>
+    <h2>Parámetros para el dibujo</h2>
+
+    <form id="info">
+        <div>
+            <label for="alto">Alto</label>
+            <input type="number" name="alto" id="alto" value="300">
+        </div>
+        <br>
+        <div>
+            <label for="ancho">Ancho</label>
+            <input type="number" name="ancho" id="ancho" value="300">
+        </div>
+        <br>
+        <div>
+            <label for="cantLineas">Cantidad de Líneas</label>
+            <input type="number" name="cantLineas" id="cantLineas" value="60">
+        </div>
+        <br>
+        <div>
+            <label for="color">Color</label>
+            <input type="color" name="color" id="color">
+        </div>
+        <br>
+        <input type="submit" value="Dibujar !">
+    </form>
+    <br>
+
+    <p>No css for this test :( </p>
+
     <script src="./index.js"></script>
 </body>
 </html>

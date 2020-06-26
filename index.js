@@ -3,8 +3,16 @@
 let d = document.getElementById("dibujo");
 let lienzo = d.getContext("2d");
 
+
+//Variables del canvas
+let ancho = document.getElementById("ancho").value;
+let alto = document.getElementById("alto").value;
+let cantLineas = document.getElementById("cantLineas").value;
+let colorRaya = document.getElementById("color").value;
+
 //Función para trazar rayas
-function raya(xi, yi, xf, yf) {
+function raya(xi, yi, xf, yf)
+{
     lienzo.beginPath();
     lienzo.strokeStyle = colorRaya;
     lienzo.moveTo(xi, yi);
@@ -13,23 +21,58 @@ function raya(xi, yi, xf, yf) {
     lienzo.closePath();
 };
 
-// Alto y Ancho del canvas (admite modificar el HTML)
-let altoLienzo = lienzo.canvas.clientHeight;
-let anchoLienzo = lienzo.canvas.clientWidth;
-
-// Modificar Cantidad de rayas y color
-let cantidadRayas = 25;
-let colorRaya = "green";
-
-// Calculo "automático" del espacio entre rayas
-let espaciadoVertical = altoLienzo / cantidadRayas;
-let espaciadoHorizontal = anchoLienzo / cantidadRayas;
-
-
-for (let i = 0; i < cantidadRayas; i++) {
-    let xi = anchoLienzo;
-    let yi = altoLienzo - (i*espaciadoVertical);
-    let xf = anchoLienzo - ((i+1)*espaciadoHorizontal);
-    let yf = 0;
-    raya(xi, yi, xf, yf);
+function reiniciarLienzo() 
+{   
+   lienzo.clearRect(0, 0, d.width, d.height);
 };
+
+function dibujarCanvas()
+{
+    for (let i = 0; i < cantLineas; i++)
+    {
+        let espaciadoVertical = alto / cantLineas;
+        let espaciadoHorizontal = ancho / cantLineas;
+        let xi = ancho;
+        let yi = alto - (i*espaciadoVertical);
+        let xf = ancho - ((i+1)*espaciadoHorizontal);
+        let yf = 0;
+        raya(xi, yi, xf, yf);
+    };
+};
+
+//Dibujo al abrir la web
+window.addEventListener("load", (event) =>
+{
+    dibujarCanvas();
+    
+});
+
+document.getElementById("info").addEventListener("submit", (event) =>
+{
+    // evitar subbmit y limpiar el canvas
+    event.preventDefault();
+    reiniciarLienzo()
+    
+    // setear el ancho y alto del canvas (HTML element)
+    d.height = document.getElementById("alto").value;
+    d.width = document.getElementById("ancho").value;
+
+    // re-setear variables para redibujar
+    ancho = document.getElementById("ancho").value;
+    alto = document.getElementById("alto").value;
+    cantLineas = document.getElementById("cantLineas").value;
+    colorRaya = document.getElementById("color").value;
+    
+    
+    return dibujarCanvas()
+    
+});
+
+//console.log(alto);
+//console.log(ancho);
+//console.log(colorRaya);
+//console.log(cantLineas);
+
+// Calculo "automático" del espacio entre lineas
+//console.log(espaciadoHorizontal);
+//console.log(espaciadoVertical);
